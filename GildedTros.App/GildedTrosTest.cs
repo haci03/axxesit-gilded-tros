@@ -8,10 +8,10 @@ namespace GildedTros.App
         [Fact]
         public void foo()
         {
-            IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
+            IList<Item> Items = new List<Item> { new Item { Name = "B-DAWG Keychain", SellIn = 0, Quality = 0 } };
             GildedTros app = new GildedTros(Items);
             app.UpdateQualityData();
-            Assert.Equal("fixme", Items[0].Name);
+            Assert.Equal("B-DAWG Keychain", Items[0].Name);
         }
     }
 }
