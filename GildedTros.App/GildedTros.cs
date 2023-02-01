@@ -48,15 +48,27 @@ namespace GildedTros.App
                         break;
                     case Constants.RING_OF_CLEANSENING_CODE:
                     case Constants.ELIXIR_OF_THE_SOLID:
-                    case Constants.DUPLICATE_CODE:
-                    case Constants.LONG_METHODS:
-                    case Constants.UGLY_VARIABLE_NAMES:
-
                         Items[itemIndex].SellIn = Items[itemIndex].SellIn - 1;
                         if (Items[itemIndex].SellIn >= MINQUALITY)
                             step = 1;
                         else
                             step = 2;//sell date passed, degrade twice 
+
+                         Items[itemIndex].Quality = Items[itemIndex].Quality - step;
+                        //quality never negative
+                        if (Items[itemIndex].Quality <= MINQUALITY)
+                            Items[itemIndex].Quality = MINQUALITY;
+
+                        break;
+                    case Constants.DUPLICATE_CODE:
+                    case Constants.LONG_METHODS:
+                    case Constants.UGLY_VARIABLE_NAMES:
+                        //degrade twice 
+                        Items[itemIndex].SellIn = Items[itemIndex].SellIn - 1;
+                        if (Items[itemIndex].SellIn >= MINQUALITY)
+                            step = 2;
+                        else
+                            step = 4;
 
                          Items[itemIndex].Quality = Items[itemIndex].Quality - step;
                         //quality never negative
